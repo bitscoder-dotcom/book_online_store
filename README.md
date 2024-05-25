@@ -10,7 +10,9 @@ The Online Book Store Application is a web application built with Spring Boot. I
 4. Run the command `mvn spring-boot:run` to start the application.
 
 ## Design Explanation
-The application uses Spring Boot Starter for easy bootstrapping of the application. It uses Spring Security for authentication and authorization. JWT is used for maintaining the session. The application uses PostgreSQL as the database, and Spring Data JPA for ORM. Lombok is used to reduce boilerplate code. ModelMapper is used for object mapping.
+The application uses Spring Boot Starter for easy bootstrapping of the application. It uses Spring Security for authentication and authorization. 
+JWT is used for maintaining the session. The application uses PostgreSQL as the database, and Spring Data JPA for ORM. 
+Lombok is used to reduce boilerplate code. ModelMapper is used for object mapping.
 
 ## API Documentation
 The application exposes several endpoints:
