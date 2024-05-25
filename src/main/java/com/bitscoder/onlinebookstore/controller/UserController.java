@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Objects;
@@ -35,13 +36,13 @@ public class UserController {
 
     @PostMapping("/register")
     public String register(@ModelAttribute UserRegistrationRequest request, RedirectAttributes redirectAttributes) {
-        UserRegistrationRequest.Response response = authService.register(request);
-        if (response.getMessage().equals("User registered successfully")) {
+        try {
+            UserRegistrationRequest.Response response = authService.register(request);
             redirectAttributes.addFlashAttribute("message", response.getMessage());
-            return "redirect:/app/login";
-        } else {
-            redirectAttributes.addFlashAttribute("message", response.getMessage());
-            return "redirect:/registrationFailure";
+            return "redirect:/auth/login";
+        } catch (ResponseStatusException e) {
+            redirectAttributes.addFlashAttribute("error", e.getReason());
+            return "redirect:/auth/register";
         }
     }
 
@@ -53,19 +54,15 @@ public class UserController {
 
     @PostMapping("/login")
     public String signIn(@ModelAttribute SignInRequest request, HttpServletResponse response, RedirectAttributes redirectAttributes) {
-
-        ResponseEntity<ApiResponse<SignInRequest.Response>> apiResponse = authService.signIn(request);
-        if (apiResponse.getStatusCode() == HttpStatus.OK) {
-
+        try {
+            ResponseEntity<ApiResponse<SignInRequest.Response>> apiResponse = authService.signIn(request);
             Cookie cookie = new Cookie("token", Objects.requireNonNull(apiResponse.getBody()).getData().getToken());
             cookie.setHttpOnly(true);
-
             response.addCookie(cookie);
-
             return "userPage";
-        } else {
-            redirectAttributes.addFlashAttribute("error", Objects.requireNonNull(apiResponse.getBody()).getMessage());
-            return "redirect:error";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+            return "redirect:/auth/login";
         }
     }
 

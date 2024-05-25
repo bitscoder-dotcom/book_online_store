@@ -61,8 +61,11 @@
 <body>
 <button class="btn btn-custom btn-block">
   <i class="fas fa-sign-out-alt icon-large"></i>
-  <a href="/app/logout" class="text-white">Logout</a>
+  <a href="/auth/logout" class="text-white">Logout</a>
 </button>
+<div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+  <p th:text="${errorMessage}"></p>
+</div>
 <div class="container">
   <h1 class="text-center my-4 heading">Findar Online Book Store</h1>
   <div class="row justify-content-center">

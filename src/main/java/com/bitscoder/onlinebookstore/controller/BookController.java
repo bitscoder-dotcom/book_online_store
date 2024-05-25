@@ -71,36 +71,34 @@ public class BookController {
         } else {
             // handle error
             model.addAttribute("errorMessage", "An error occurred: " + response.getBody().getMessage());
-            return "errorPage";
+            return "redirect:/app/userPage";
         }
     }
 
     @GetMapping("/book/{id}")
-    public String showBookPage(@PathVariable String id, Model model, Principal principal) {
+    public String showBookPage(@PathVariable String id, Model model, Principal principal, RedirectAttributes redirectAttributes) {
         log.info("Received request to show book by id page");
-        ResponseEntity<ApiResponse<BookDto.Response>> response = bookService.getBookById(id, principal);
-        if (response.getStatusCode() == HttpStatus.OK) {
+        try {
+            ResponseEntity<ApiResponse<BookDto.Response>> response = bookService.getBookById(id, principal);
             model.addAttribute("book", response.getBody().getData());
             return "book";
-        } else {
-            // handle error
-            model.addAttribute("errorMessage", "An error occurred: " + response.getBody().getMessage());
-            return "errorPage";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "An error occurred: " + e.getMessage());
+            return "redirect:/app/userPage";
         }
     }
 
     @GetMapping("/updateBook/{id}")
-    public String showUpdateBookPage(@PathVariable String id, Model model, Principal principal) {
+    public String showUpdateBookPage(@PathVariable String id, Model model, Principal principal, RedirectAttributes redirectAttributes) {
         log.info("Received request to show update book page");
-        ResponseEntity<ApiResponse<BookDto.Response>> response = bookService.getBookById(id, principal);
-        if (response.getStatusCode() == HttpStatus.OK) {
+        try {
+            ResponseEntity<ApiResponse<BookDto.Response>> response = bookService.getBookById(id, principal);
             model.addAttribute("bookDto", new BookDto());
             model.addAttribute("book", response.getBody().getData());
             return "updateBook";
-        } else {
-            // handle error
-            model.addAttribute("errorMessage", "An error occurred: " + response.getBody().getMessage());
-            return "errorPage";
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "An error occurred: " + e.getMessage());
+            return "redirect:/app/userPage";
         }
     }
 

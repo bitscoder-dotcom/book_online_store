@@ -35,7 +35,10 @@
       <div class="card border-0 shadow rounded-3 my-5">
         <div class="card-body p-4 p-sm-5">
           <h5 class="card-title text-center mb-5 fw-light fs-5">Login</h5>
-          <form th:action="@{/app/login}" th:object="${signInRequest}" method="post">
+          <form th:action="@{/auth/login}" th:object="${signInRequest}" method="post">
+            <div th:if="${error}" class="alert alert-danger" role="alert">
+              <p th:text="${error}"></p>
+            </div>
             <div class="form-floating mb-3">
               <input type="email" th:field="*{email}" class="form-control" id="floatingInput" placeholder="name@example.com">
               <label for="floatingInput">Email address</label>
@@ -55,6 +58,11 @@
               <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Login</button>
             </div>
           </form>
+
+          <div class="text-center mt-4">
+            <span class="fw-normal">Don't have an account?</span>
+            <a href="/auth/register" class="fw-bold text-decoration-none"> Register here</a>
+          </div>
         </div>
       </div>
     </div>
