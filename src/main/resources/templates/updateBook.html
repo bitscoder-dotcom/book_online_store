@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Book</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .btn-primary {
+            border-radius: 0;
+        }
+        .btn-secondary {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+    </style>
+</head>
+<body>
+<a href="/app/userPage" class="btn btn-secondary">Go to User Page</a>
+<div class="container">
+    <h1 class="text-center my-4">Update Book</h1>
+    <form th:action="@{/app/updateBook/{id}(id=${book.id})}" method="post">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" class="form-control" placeholder="Title" th:value="${book.title}" required>
+        </div>
+        <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author" class="form-control" placeholder="Author" th:value="${book.author}" required>
+        </div>
+        <div class="form-group">
+            <label for="isbn">ISBN</label>
+            <input type="text" id="isbn" name="isbn" class="form-control" placeholder="ISBN" th:value="${book.isbn}" required>
+        </div>
+        <div class="form-group">
+            <label for="genre">Genre</label>
+            <select id="genre" name="genre" class="form-control" required>
+                <option value="">Select Genre</option>
+                <option value="DRAMA" th:selected="${book.genre == 'DRAMA'}">Drama</option>
+                <option value="FICTION" th:selected="${book.genre == 'FICTION'}">Fiction</option>
+                <option value="ACTION" th:selected="${book.genre == 'ACTION'}">Action</option>
+                <option value="ROMANCE" th:selected="${book.genre == 'ROMANCE'}">Romance</option>
+                <option value="SCI_FI" th:selected="${book.genre == 'SCI_FI'}">Sci-Fi</option>
+                <option value="WESTERN" th:selected="${book.genre == 'WESTERN'}">Western</option>
+                <option value="HISTORY" th:selected="${book.genre == 'HISTORY'}">History</option>
+                <option value="CIVIL_ENGINEERING" th:selected="${book.genre == 'CIVIL_ENGINEERING'}">Civil Engineering</option>
+                <option value="JAVA" th:selected="${book.genre == 'JAVA'}">Java</option>
+                <option value="PYTHON" th:selected="${book.genre == 'PYTHON'}">Python</option>
+                <option value="SOFTWARE_PROGRAMMING" th:selected="${book.genre == 'SOFTWARE_PROGRAMMING'}">Software Programming</option>
+                <option value="RELIGION" th:selected="${book.genre == 'RELIGION'}">Religion</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" name="quantity" class="form-control" placeholder="Quantity" th:value="${book.quantity}" required>
+        </div>
+        <div class="form-group">
+            <label for="publicationYear">Publication Year</label>
+            <input type="date" id="publicationYear" name="publicationYear" class="form-control" placeholder="Publication Year" th:value="${book.publicationYear}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+<!-- Add Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

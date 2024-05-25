@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Findar Online Book Store</title>
+  <!-- Add Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Add Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      background-color: #2F4F4F; /* Dark greenish gray */
+      color: white;
+    }
+    .container {
+      max-width: 960px;
+      margin-top: 50px;
+      border-radius: 15px;
+      background-color: #ffffff;
+      padding: 20px;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+      color: #333333;
+    }
+    .heading {
+      color: #5F9EA0;
+      border-bottom: 1px solid #5F9EA0;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .btn-custom {
+      background-color: #5F9EA0;
+      color: white;
+      margin-bottom: 20px;
+    }
+    .btn-custom:hover {
+      background-color: #4e8282;
+    }
+    .form-inline {
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+    .form-control {
+      border-radius: 0;
+      border: 2px solid #5F9EA0;
+    }
+    .list-unstyled {
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .btn-block a {
+      color: white;
+      text-decoration: none;
+    }
+    .icon-large {
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+<body>
+<button class="btn btn-custom btn-block">
+  <i class="fas fa-sign-out-alt icon-large"></i>
+  <a href="/app/logout" class="text-white">Logout</a>
+</button>
+<div class="container">
+  <h1 class="text-center my-4 heading">Findar Online Book Store</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <ul class="list-unstyled text-center">
+        <li>
+          <button class="btn btn-custom btn-block"><i class="fas fa-book icon-large"></i> <a href="/app/books">View all books</a></button>
+        </li>
+        <li>
+          <form id="retrieveBookForm" class="form-inline">
+            <input type="text" id="bookId" name="bookId" placeholder="Enter book ID" class="form-control mr-2">
+            <button type="submit" class="btn btn-custom"><i class="fas fa-search icon-large"></i> Retrieve a book by ID</button>
+          </form>
+        </li>
+        <li>
+          <button class="btn btn-custom btn-block"><i class="fas fa-plus icon-large"></i> <a href="/app/addBook">Add a new book</a></button>
+        </li>
+        <li>
+          <form id="updateBookForm" class="form-inline">
+            <input type="text" id="updateBookId" name="updateBookId" placeholder="Enter book ID" class="form-control mr-2">
+            <button type="submit" class="btn btn-custom"><i class="fas fa-edit icon-large"></i> Update a book's information</button>
+          </form>
+        </li>
+        <li>
+          <button class="btn btn-custom btn-block"><i class="fas fa-trash icon-large"></i> <a href="/app/books">Remove a book</a></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- Add Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+  document.getElementById('retrieveBookForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var bookId = document.getElementById('bookId').value;
+    window.location.href = '/app/book/' + bookId;
+  });
+  document.getElementById('updateBookForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var bookId = document.getElementById('updateBookId').value;
+    window.location.href = '/app/updateBook/' + bookId;
+  });
+</script>
+</body>
+</html>

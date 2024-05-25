@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>All Books</title>
+  <!-- Add Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .action-buttons form {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+<a href="/app/userPage" class="btn btn-secondary" style="position: absolute; top: 50px; left: 20px;">Go to User Page</a>
+<div class="container">
+  <h1 class="text-center mb-5">All Books</h1>
+  <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>ISBN</th>
+      <th>Genre</th>
+      <th>Publication Year</th>
+      <th>Quantity</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+      <td th:text="${book.id}"></td>
+      <td th:text="${book.title}"></td>
+      <td th:text="${book.author}"></td>
+      <td th:text="${book.isbn}"></td>
+      <td th:text="${book.genre}"></span></td>
+      <td th:text="${book.publicationYear}"></td>
+      <td th:text="${book.quantity}"></td>
+      <td class="action-buttons">
+        <form th:action="@{/app/removeBook/{id}(id=${book.id})}" method="post">
+          <button type="submit" class="btn btn-danger">Remove</button>
+        </form>
+        <form th:action="@{/app/updateBook/{id}(id=${book.id})}" method="get">
+          <button type="submit" class="btn btn-primary">Modify</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<!-- Add Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

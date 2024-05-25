@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Details</title>
+  <!-- Add Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      margin-top: 50px;
+      max-width: 600px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .btn-secondary {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      border-radius: 0;
+    }
+    .card {
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+<a href="/app/userPage" class="btn btn-secondary">Return to User Page</a>
+<div class="container">
+  <h1 class="text-center mb-5">Book Details</h1>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title" th:text="${book.title}"></h5>
+      <p class="card-text"><strong>Author:</strong> <span th:text="${book.author}"></span></p>
+      <p class="card-text"><strong>ISBN:</strong> <span th:text="${book.isbn}"></span></p>
+      <p class="card-text"><strong>Genre:</strong> <span th:text="${book.genre}"></span></p>
+      <p class="card-text"><strong>Publication Year:</strong> <span th:text="${book.publicationYear}"></span></p>
+      <p class="card-text"><strong>Quantity:</strong> <span th:text="${book.quantity}"></span></p>
+    </div>
+  </div>
+</div>
+<!-- Add Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
