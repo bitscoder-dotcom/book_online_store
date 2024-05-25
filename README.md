@@ -106,14 +106,14 @@ MIT
 
 ## Frontend UI
 
-![](/Users/apple/Documents/ideaProjects/Online-Book-Store/src/main/resources/images/home.png "Home page")
-![](/Users/apple/Documents/ideaProjects/Online-Book-Store/src/main/resources/images/register.png "Register Page")
-![](/Users/apple/Documents/ideaProjects/Online-Book-Store/src/main/resources/images/login.png "Login Page")
-![](/Users/apple/Documents/ideaProjects/Online-Book-Store/src/main/resources/images/userPage.png "User Page")
-![](/Users/apple/Documents/ideaProjects/Online-Book-Store/src/main/resources/images/allbooks.png "List of Books Page")
-![](/Users/apple/Documents/ideaProjects/Online-Book-Store/src/main/resources/images/invalidLogin.png "Invalid Login Details")
-![](/Users/apple/Documents/ideaProjects/Online-Book-Store/src/main/resources/images/addBook.png "Add Book Page")
-![](/Users/apple/Documents/ideaProjects/Online-Book-Store/src/main/resources/images/invalidBookId.png "Invalid Book Id")
-![When book has been successfully added to book store](/Users/apple/Documents/ideaProjects/Online-Book-Store/src/main/resources/images/bookAdded.png "Book Added")
+![The application home page](src/main/resources/images/home.png "Home page")
+![The user registration page](src/main/resources/images/register.png "Register Page")
+![The user login page](src/main/resources/images/login.png "Login Page")
+![The page the user sees when successfully logged in](src/main/resources/images/userPage.png "User Page")
+![To display the list of books in the store](src/main/resources/images/allbooks.png "List of Books Page")
+![When invalid login details are inserted](src/main/resources/images/invalidLogin.png "Invalid Login Details")
+![To add a book to the store](src/main/resources/images/addBook.png "Add Book Page")
+![When an invalid book id is called](src/main/resources/images/invalidBookId.png "Invalid Book Id")
+![When book has been successfully added to book store](src/main/resources/images/bookAdded.png "Book Added")
 
 
